@@ -1,0 +1,1 @@
+The system achieves 92% accuracy with CoreML acceleration delivering 21.3 tokens/second on M3 Pro (7.89× speedup), enabling sub-second responses. Our LoRA fine-tuned TinyLlama 1.1B proves hybrid approaches superior for responsive, context-aware optimization without cloud dependencies.
