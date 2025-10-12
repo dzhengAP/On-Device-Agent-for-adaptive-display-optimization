@@ -5,7 +5,6 @@
 //  Created by David Zheng on 6/29/25.
 //
 
-
 import Foundation
 
 /// Controls actual display settings on the Mac system
