@@ -38,7 +38,7 @@ class InferenceBenchmark {
     func runInferenceBenchmark() {
         let separator = String(repeating: "=", count: 60)
         print("\n\(separator)")
-        print("🚀 INFERENCE PERFORMANCE BENCHMARK")
+        print("INFERENCE PERFORMANCE BENCHMARK")
         print("Device: \(deviceInfo)")
         print(separator)
         
@@ -46,7 +46,7 @@ class InferenceBenchmark {
         
         // Test each acceleration method
         for method in AccelerationMethod.allCases {
-            print("\n⚡ Testing \(method.rawValue)...")
+            print("\n Testing \(method.rawValue)...")
             
             let result = testSingleInference(method: method)
             results.append(result)
@@ -98,7 +98,7 @@ class InferenceBenchmark {
         let testPrompt = "gaming app brightness:"
         let tokens = tokenizeText(testPrompt, vocab: vocab)
         
-        print("  🔤 Input: \"\(testPrompt)\" -> \(tokens.count) tokens")
+        print(" Input: \"\(testPrompt)\" -> \(tokens.count) tokens")
         
         // Generate tokens
         let generatedIDs = engine.generateStreaming(
@@ -116,7 +116,7 @@ class InferenceBenchmark {
         
         // Convert generated tokens back to text for verification
         let generatedText = convertTokensToText(generatedIDs, vocab: vocab)
-        print("  📝 Generated: \"\(generatedText)\"")
+        print("  Generated: \"\(generatedText)\"")
         
         return InferenceResult(
             method: method,
@@ -158,7 +158,7 @@ class InferenceBenchmark {
             engine.setMPSEnabled(true)
         }
         
-        print("    ⚙️ Configured for \(method.rawValue)")
+        print("  Configured for \(method.rawValue)")
         return engine
     }
     
@@ -195,15 +195,15 @@ class InferenceBenchmark {
         
         // Find best performers
         if let fastest = sortedResults.first {
-            print("\n🏆 Fastest: \(fastest.method.rawValue) (\(String(format: "%.1f", fastest.inferenceTimeMs))ms)")
+            print("\n Fastest: \(fastest.method.rawValue) (\(String(format: "%.1f", fastest.inferenceTimeMs))ms)")
         }
         
         if let bestThroughput = sortedResults.max(by: { $0.tokensPerSecond < $1.tokensPerSecond }) {
-            print("⚡ Highest throughput: \(bestThroughput.method.rawValue) (\(String(format: "%.1f", bestThroughput.tokensPerSecond)) tok/s)")
+            print("Highest throughput: \(bestThroughput.method.rawValue) (\(String(format: "%.1f", bestThroughput.tokensPerSecond)) tok/s)")
         }
         
         if let lowestMemory = sortedResults.min(by: { $0.memoryUsageMB < $1.memoryUsageMB }) {
-            print("💾 Lowest memory: \(lowestMemory.method.rawValue) (\(String(format: "%.1f", lowestMemory.memoryUsageMB))MB)")
+            print("Lowest memory: \(lowestMemory.method.rawValue) (\(String(format: "%.1f", lowestMemory.memoryUsageMB))MB)")
         }
         
         print(separator)
