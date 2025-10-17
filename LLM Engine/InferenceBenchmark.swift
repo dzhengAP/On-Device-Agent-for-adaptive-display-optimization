@@ -3,7 +3,8 @@ import CoreML
 import Metal
 import QuartzCore
 
-/// Simple inference performance tester for different acceleration methods
+
+/// Simple inference performance tester for different acceleration methods: CPU/CoreML/Metal
 class InferenceBenchmark {
     
     enum AccelerationMethod: String, CaseIterable {
